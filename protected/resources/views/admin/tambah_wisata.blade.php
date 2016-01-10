@@ -1,3 +1,4 @@
+
 @extends('admin.layout.layout')
 
 @section('title', 'Page Title')
@@ -29,7 +30,7 @@
                   <h3 class="box-title">Mohon Isikan Data - Data Wisata Dengan Benar</h3>
                 </div><!-- /.box-header -->
 
-                  {!! Form::open(['url' => 'admin/wisata', 'class' => 'form-horizontal']) !!}
+                  {!! Form::open(['url' => 'admin/wisata', 'class' => 'form-horizontal', 'files' => true, 'enctype' => 'multipart/form-data']) !!}
                   <div class="box-body">
                     <div class="form-group">
                       <label for="inputEmail3" class="col-sm-2 control-label">Nama Wisata</label>
@@ -41,6 +42,21 @@
                       <label for="inputPassword3" class="col-sm-2 control-label">Alamat</label>
                       <div class="col-sm-10">
                         <input type="text" name="alamat" class="form-control" id="inputPassword3" placeholder="Alamat Wisata">
+                      </div>
+                    </div>
+                     <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-2 control-label">Isi Deskripsi</label>
+                      <div class="col-sm-10">
+                         <form>
+                            <textarea id="editor1" name="deskripsi" rows="10" cols="80" required>
+                               
+                            </textarea>
+                            <script>
+                                // Replace the <textarea id="editor1"> with a CKEditor
+                                // instance, using default configuration.
+                                CKEDITOR.replace( 'editor1' );
+                            </script>
+                        </form>
                       </div>
                     </div>
                      <div class="form-group">
@@ -91,6 +107,13 @@
                         <input type="text" name="aff" class="form-control" id="inputEmail3" placeholder="Link Afiliasi">
                       </div>
                     </div>
+                     <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Upload Image</label>
+                      <div class="col-sm-10">
+                        <input type="file" name="image" class="form-control" id="inputEmail3" placeholder="Link Afiliasi">
+                      </div>
+                    </div>
+        
                   <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Tambah</button>
                   </div>

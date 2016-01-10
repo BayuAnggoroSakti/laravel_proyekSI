@@ -40,5 +40,5 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/admin/tambah_wisata','WisataController@create');
     Route::get('/admin/edit_wisata','WisataController@edit');
     Route::resource('admin/wisata', 'WisataController');
-
+    Route::get('wisata/get','WisataController@jsonwisata');
 });

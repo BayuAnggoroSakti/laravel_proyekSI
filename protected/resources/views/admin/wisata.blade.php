@@ -31,33 +31,52 @@
                       <tr>
                         <th>Nama Wisata</th>
                         <th>Alamat</th>
-                        <th>Lokasi Latitude</th>
-                        <th>Lokasi Longtitude</th>
+                        <th>Lokasi Latitude & Longtitude</th>
+                        <th>Deskripsi</th>
                         <th>Wilayah</th>
                         <th>Link Affiliasi</th>
+                        <th>Gambar</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
                     @foreach ($wisata as $data)
-                      <tr>
+                      <tr align="center">
                         <td>{{ $data->nama }}</td>
                         <td>{{ $data->alamat }}</td>     
-                        <td>{{ $data->latitude }}</td>  
-                        <td>{{ $data->longtitude }}</td>
+                        <td>{{ $data->latitude }} , {{ $data->longtitude }}</td>  
+                        <td>{{ $data->deskripsi }}</td>
                         <td>{{ $data->wilayah }}</td>    
                         <td>{{ $data->aff }}</td>  
+                        <td><img src=" {{ $data->image }}" width="50px" height="50px"></td>
                         <td>  
                             <div class="btn-group">
+            
+                         
                           <button type="button" class="btn btn-info">Action</button>
                           <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
                             <span class="caret"></span>
                             <span class="sr-only">Toggle Dropdown</span>
                           </button>
                           <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ url('admin/wisata/'. $data->id_wisata . '/edit_wisata') }}">Edit</a></li>
+                            
+                            <li>
+                               <div class="row">
+                                <div class="col-md-10">
+                                  <a href="{{ url('admin/wisata/'. $data->id_wisata . '/edit') }}"><button class="btn btn-block btn-success">Edit</button></a>
+                                </div>
+                              </div>
+                            </li>
                             <li class="divider"></li>
-                            <li><a href="#">Delete</a></li>
+                             <li>
+                               <div class="row">
+                                <div class="col-md-10">
+                                   {!! Form::open(['method' => 'DELETE', 'route' => ['admin.wisata.destroy', $data->id_wisata]]) !!}
+                                   <input type="submit" value="Hapus" class="btn btn-block btn-danger">
+                                  {!! Form::close() !!}
+                                </div>
+                              </div>
+                            </li>
                           </ul>
                         </div>
                      </td>             
@@ -66,17 +85,7 @@
                       </tbody>
                       @endforeach
                    
-                    <tfoot>
-                      <tr>
-                       <th>Nama Wisata</th>
-                        <th>Alamat</th>
-                        <th>Lokasi Latitude</th>
-                        <th>Lokasi Longtitude</th>
-                        <th>Wilayah</th>
-                        <th>Link Affiliasi</th>
-                        <th>Action</th>
-                      </tr>
-                    </tfoot>
+                   
                   </table>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->

@@ -41,6 +41,7 @@
     {!! Html::script('protected/assets/admin/dist/js/app.min.js') !!}
     <!-- Sparkline -->
     {!! Html::script('protected/assets/admin/plugins/sparkline/jquery.sparkline.min.js') !!}
+    {!! Html::script('protected/assets/admin/plugins/ckeditor/ckeditor.js') !!}
     <!-- jvectormap -->
     {!! Html::script('protected/assets/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') !!}
     {!! Html::script('protected/assets/admin/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') !!}
@@ -485,7 +486,9 @@
    
      <script>
       $(function () {
-        $("#example1").DataTable();
+        $("#example1").DataTable({
+
+        });
         $('#example2').DataTable({
           "paging": true,
           "lengthChange": false,
